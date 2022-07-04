@@ -14,6 +14,10 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+""" Use (docker-compose run --rm app sh -c "python manage.py createsuperuser")
+ or (winpty docker-compose run --rm app sh -c "python manage.py createsuperuser") command
+for creating superuser in docker...which create superuser without tty """
+
     def create_superuser(self, email, password):
         user = self.create_user(
             email=email,
